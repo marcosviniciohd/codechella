@@ -3,12 +3,15 @@ package br.com.codechalle.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.time.LocalDate;
+
 @Table("eventos")
 public class Evento {
     @Id
     private Long id;
     private TipoEvento tipoEvento;
     private String nome;
+    private LocalDate data;
     private String descricao;
 
     public Long getId() {
@@ -41,5 +44,13 @@ public class Evento {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 }
