@@ -31,6 +31,11 @@ public class EventoController {
         return eventoService.salvar(eventoDTO);
     }
 
+    @PutMapping("/{id}")
+    public Mono<EventoDTO> atualizar(@PathVariable Long id, @RequestBody EventoDTO eventoDTO) {
+        return eventoService.atualizar(id, eventoDTO);
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Mono<Void> excluir(@PathVariable Long id) {
