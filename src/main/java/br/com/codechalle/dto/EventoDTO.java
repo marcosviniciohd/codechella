@@ -22,4 +22,14 @@ public record EventoDTO(
         );
 
     }
+
+    public Evento toEntity() {
+        Evento evento = new Evento();
+        evento.setId(this.id());
+        evento.setTipo(this.tipoEvento());
+        evento.setNome(this.nome());
+        evento.setData(this.data());
+        evento.setDescricao(this.descricao());
+        return evento;
+    }
 }

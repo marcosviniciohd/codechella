@@ -23,4 +23,14 @@ public class EventoService {
                 switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND)))
                 .map(EventoDTO::toDTO);
     }
+
+    public Mono<EventoDTO> salvar(EventoDTO eventoDTO) {
+        return eventoRepository.save(eventoDTO.toEntity()).map(EventoDTO::toDTO);
+    }
+
+    public Mono<Void> excluir(Long id) {
+        return eventoRepository.findById(id).switchIfEmpty(
+                Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND
+                ))).flatMap(eventoRepository::delete);
+    }
 }
